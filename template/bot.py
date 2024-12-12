@@ -1,5 +1,5 @@
 import discord
-from secret import TOKEN
+from template.secret import TOKEN
 
 def run_discord_bot():
 
@@ -9,7 +9,7 @@ def run_discord_bot():
     client = discord.Client( intents=intents )
 
     # Set prefix
-    prefix = '!'
+    prefix = '.'
 
     # Show bot logged on successfully
     @client.event
@@ -26,13 +26,13 @@ def run_discord_bot():
         content = msg.content
 
         # Check if the message starts with a known command
-        if content.startswith(prefix + "hello"):
+        if content.startswith(prefix + "say"):
 
             # Grab the author's name
             author = msg.author.name
 
             # Send hello back
-            await msg.channel.send(f"Hello, {author}!")
+            await msg.channel.send(f"{content}")
 
     # Run Bot with Token
         # Should be  the very last command inside of run_discord_bot 
